@@ -49,6 +49,14 @@ class ProductController extends AbstractController
     }
 
     /**
+     * @Route("/list", name="listAll")
+     */
+    public function listAllProduct()
+    {
+
+    }
+
+    /**
      * @Route("/delete", name="delete")
      */
     public function deleteProduct()

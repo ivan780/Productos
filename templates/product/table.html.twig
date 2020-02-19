@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}Form{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <table class="tg">
+        <tr>
+            <th class="tg-0lax">Id</th>
+            <th class="tg-0lax">Name</th>
+            <th class="tg-0lax">Price</th>
+            <th class="tg-0lax">Description</th>
+            <th class="tg-0lax">Update</th>
+            <th class="tg-0lax">Delete</th>
+        </tr>
+        {% for pro in product %}
+            <tr>
+                <td class="tg-0lax">{{ pro.id }}</td>
+                <td class="tg-0lax">{{ pro.name }}</td>
+                <td class="tg-0lax">{{ pro.price }}€</td>
+                <td class="tg-0lax">{{ pro.description }}</td>
+                <td class="tg-0lax">Update</td>
+                <td class="tg-0lax">Delete</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

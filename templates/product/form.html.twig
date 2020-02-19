@@ -2,7 +2,7 @@
 {% block title %}Form{% endblock %}
 
 {% block body %}
-    <form action="{{ path({ action })  }}" method="get">
+    <form action="{{ path( action )  }}" method="post">
         <label for="fname">Name:</label>
         <input type="text" id="fname" name="name"><br><br>
 
@@ -11,5 +11,7 @@
 
         <label for="fDesc">Description:</label>
         <input type="text" id="fDesc" name="desc"><br><br>
+
+        <input type="submit" value="Enviar">
     </form>
 {% endblock %}

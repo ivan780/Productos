@@ -34,6 +34,20 @@ class ProductController extends AbstractController
 
     /**
      * @Route(
+     *     "/form",
+     *     name="createForm"
+     * )
+     */
+    public function CreateProductForm()
+    {
+        return $this->render('product/form.html.twig', [
+            'action' => "create"
+        ]);
+    }
+
+
+    /**
+     * @Route(
      *     "/update/{id}",
      *     name="update"
      * )
@@ -71,19 +85,6 @@ class ProductController extends AbstractController
                 'product' => $products
             ]
         );
-    }
-
-    /**
-     * @Route(
-     *     "/form",
-     *     name="createForm"
-     * )
-     */
-    public function CreateProductForm()
-    {
-        return $this->render('product/form.html.twig', [
-            'action' => "create"
-        ]);
     }
 
     /**

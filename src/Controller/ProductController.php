@@ -59,6 +59,20 @@ class ProductController extends AbstractController
 
     /**
      * @Route(
+     *     "/updateForm/{id}",
+     *     name="updateForm"
+     * )
+     */
+    public function updateProductForm($id)
+    {
+        return $this->render('product/form.html.twig', [
+            'action' => "",
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * @Route(
      *     "/delete/{id}",
      *     name="delete"
      * )

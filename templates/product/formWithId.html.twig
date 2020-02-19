@@ -3,11 +3,14 @@
 
 {% block body %}
     <form action="{{ path({ action })  }}" method="get">
-        <label for="fname">Name:</label>
-        <input type="text" id="fname" name="name"><br><br>
+        <label for="fId">Id:</label>
+        <input type="text" id="fId" name="id"><br><br>
+
+        <label for="fName">Name:</label>
+        <input type="text" id="fName" name="name"><br><br>
 
         <label for="fPrice">Price :</label>
-        <input type="text" id="fPrice" name="price"><br><br>
+        <input type="number" id="fPrice" name="price"><br><br>
 
         <label for="fDesc">Description:</label>
         <input type="text" id="fDesc" name="desc"><br><br>

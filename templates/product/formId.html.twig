@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Form{% endblock %}
+
+{% block body %}
+    <form action="{{ path({ action })  }}" method="get">
+        <label for="fId">Id:</label>
+        <input type="text" id="fId" name="id"><br><br>
+    </form>
+{% endblock %}

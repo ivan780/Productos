@@ -4,7 +4,7 @@
 {% block body %}
     <form action="{{ path({ action })  }}" method="get">
         <label for="fId">Id:</label>
-        <input type="text" id="fId" name="id"><br><br>
+        <input type="text" id="fId" name="id" value="{{ id }} disabled"><br><br>
 
         <label for="fName">Name:</label>
         <input type="text" id="fName" name="name"><br><br>

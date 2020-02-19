@@ -2,6 +2,7 @@
 {% block title %}Form{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('css/table.css') }}" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/3292bf0ef9.js" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block body %}
@@ -16,12 +17,12 @@
         </tr>
         {% for pro in product %}
             <tr>
-                <td class="tg-0lax">{{ pro.id }}</td>
-                <td class="tg-0lax">{{ pro.name }}</td>
-                <td class="tg-0lax">{{ pro.price }}€</td>
-                <td class="tg-0lax">{{ pro.description }}</td>
-                <td class="tg-0lax">Update</td>
-                <td class="tg-0lax">Delete</td>
+                <td class="tg-0lax">{{ pro.getId }}</td>
+                <td class="tg-0lax">{{ pro.getName }}</td>
+                <td class="tg-0lax">{{ pro.getPrice }}€</td>
+                <td class="tg-0lax">{{ pro.getDescription }}</td>
+                <td class="tg-0lax"><a href="{{ path('update', {id : pro.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
+                <td class="tg-0lax"><a href="{{ path('delete', {id : pro.getId}) }}"><i class="fas fa-trash-alt"></i>Delete</a></td>
             </tr>
         {% endfor %}
     </table>

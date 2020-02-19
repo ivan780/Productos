@@ -15,8 +15,6 @@ class ProductController extends AbstractController
      */
     public function createProduct(Request $request): Response
     {
-        // you can fetch the EntityManager via $this->getDoctrine()
-        // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
         $entityManager = $this->getDoctrine()->getManager();
 
         $product = new Product();
@@ -24,10 +22,8 @@ class ProductController extends AbstractController
         $product->setPrice($request->request->get('price'));
         $product->setDescription($request->request->get('desc'));
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($product);
 
-        // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
         return new Response('Producto guardado con el numero: ' . $product->getId());
@@ -42,22 +38,6 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/list", name="list")
-     */
-    public function listProduct()
-    {
-
-    }
-
-    /**
-     * @Route("/list", name="listAll")
-     */
-    public function listAllProduct()
-    {
-
-    }
-
-    /**
      * @Route("/delete", name="delete")
      */
     public function deleteProduct()
@@ -66,21 +46,32 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/form", name="form")
+     * @Route(
+     *     "/listAll",
+     *     name="listAll"
+     * )
      */
-    public function formSimple()
+    public function listAllProduct()
+    {
+        $products = $this->getDoctrine()
+            ->getRepository(Product::class)->findAll();
+
+        return $this->render(
+            'product/table.html.twig',
+            [
+                'product' => $products
+            ]
+        );
+    }
+
+    /**
+     * @Route("/form", name="createForm")
+     */
+    public function CreateProductForm()
     {
         return $this->render('product/form.html.twig', [
             'action' => "create"
         ]);
-    }
-
-    /**
-     * @Route("/formId", name="formId")
-     */
-    public function formId()
-    {
-
     }
 
     /**

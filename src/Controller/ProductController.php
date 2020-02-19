@@ -11,7 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/product", name="create")
+     * @Route(
+     *     "/product",
+     *     name="create"
+     * )
      */
     public function createProduct(Request $request): Response
     {
@@ -30,17 +33,23 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/update", name="update")
+     * @Route(
+     *     "/update/{id}",
+     *     name="update"
+     * )
      */
-    public function updateProduct()
+    public function updateProduct($id)
     {
 
     }
 
     /**
-     * @Route("/delete", name="delete")
+     * @Route(
+     *     "/delete/{id}",
+     *     name="delete"
+     * )
      */
-    public function deleteProduct()
+    public function deleteProduct($id)
     {
 
     }
@@ -65,7 +74,10 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/form", name="createForm")
+     * @Route(
+     *     "/form",
+     *     name="createForm"
+     * )
      */
     public function CreateProductForm()
     {
@@ -75,7 +87,10 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/", name="index")
+     * @Route(
+     *     "/",
+     *     name="index"
+     * )
      */
     public function index()
     {

@@ -5,18 +5,9 @@
 {% block body %}
 <div>
     {# Select #}
-    <a href="{{ path('form') }}" >Create</a>
-    <br>
-    {# Update #}
-    <a href="{{ path('formId') }}">Update</a>
-    <br>
-    {# Select #}
-    <a href="{{ path('formId') }}">List</a>
+    <a href="{{ path('createForm') }}" >Create</a>
     <br>
     {# SelectAll #}
     <a href="{{ path('listAll') }}">List</a>
-    <br>
-    {# Delete #}
-    <a href="{{ path('formId') }}">Delete</a>
 </div>
 {% endblock %}

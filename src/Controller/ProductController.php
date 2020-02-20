@@ -29,7 +29,13 @@ class ProductController extends AbstractController
 
         $entityManager->flush();
 
-        return new Response('Producto guardado con el numero: ' . $product->getId());
+        return $this->render('product/show.html.twig', [
+            'message' => "Has creado el siguiente producto",
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'price' => $product->getPrice(),
+            'desc' => $product->getDescription(),
+        ]);
     }
 
     /**

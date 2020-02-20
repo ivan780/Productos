@@ -21,7 +21,7 @@
                 <td class="tg-0lax">{{ pro.getName }}</td>
                 <td class="tg-0lax">{{ pro.getPrice }}€</td>
                 <td class="tg-0lax">{{ pro.getDescription }}</td>
-                <td class="tg-0lax"><a href="{{ path('update', {id : pro.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
+                <td class="tg-0lax"><a href="{{ path('updateForm', {id : pro.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
                 <td class="tg-0lax"><a href="{{ path('delete', {id : pro.getId}) }}"><i class="fas fa-trash-alt"></i>Delete</a></td>
             </tr>
         {% endfor %}

@@ -2,9 +2,9 @@
 {% block title %}Form{% endblock %}
 
 {% block body %}
-    <form action="{{ path({ action })  }}" method="post">
+    <form action="{{ path( action, {id : _id})  }}" method="post">
         <label for="fId">Id:</label>
-        <input type="text" id="fId" name="id" value="{{ id }} disabled"><br><br>
+        <input type="text" id="fId" name="id" value="{{ _id }}" disabled><br><br>
 
         <label for="fName">Name:</label>
         <input type="text" id="fName" name="name"><br><br>

@@ -2,27 +2,23 @@
 {% block title %}Form{% endblock %}
 
 {% block body %}
-    <div>
-        <p>
-            id: {{ id }}
-        </p>
-    </div>
+    <h2>{{ message }}</h2>
 
-    <div>
-        <p>
-            Name: {{ name }}
-        </p>
-    </div>
+    <p>
+        id: {{ id }}
+    </p>
 
-    <div>
-        <p>
-            Price: {{ price }}€
-        </p>
-    </div>
+    <p>
+        Name: {{ name }}
+    </p>
 
-    <div>
-        <p>
-            Description: {{ desc }}
-        </p>
-    </div>
+    <p>
+        Price: {{ price }}€
+    </p>
+
+    <p>
+        Description: {{ desc }}
+    </p>
+    <br>
+    <a href="{{ path('listAll') }}">List for all products</a>
 {% endblock %}

@@ -88,6 +88,7 @@ class ProductController extends AbstractController
         $entityManager->flush();
 
         return $this->render('product/show.html.twig', [
+            'message' => "Has actualizado el siguiente producto",
             'id' => $id,
             'name' => $name,
             'price' => $price,
@@ -119,7 +120,30 @@ class ProductController extends AbstractController
      */
     public function deleteProduct($id)
     {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
 
+        //Check if exist
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $name = $product->getName();
+        $price = $product->getPrice();
+        $desc = $product->getDescription();
+
+        $entityManager->remove($product);
+        $entityManager->flush();
+
+        return $this->render('product/show.html.twig', [
+            'message' => "Has eliminado el siguiente producto",
+            'id' => $id,
+            'name' => $name,
+            'price' => $price,
+            'desc' => $desc,
+        ]);
     }
 
     /**

@@ -52,8 +52,48 @@ class ProductController extends AbstractController
      *     name="update"
      * )
      */
-    public function updateProduct($id)
+    public function updateProduct($id, Request $request)
     {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
+
+        //Check if exist
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        if ($request->request->get("name")){
+            $name = $request->request->get("name");
+            $product->setName($name);
+        }else{
+            $name = $product->getName();
+        }
+
+        if ($request->request->get("price")){
+            $price = $request->request->get("price");
+            $product->setPrice($price);
+        }else{
+            $price = $product->getPrice();
+        }
+
+        if ($request->request->get("desc")){
+            $desc = $request->request->get("desc");
+            $product->setDescription($desc);
+        }else{
+            $desc = $product->getDescription();
+        }
+
+        $entityManager->flush();
+
+        return $this->render('product/show.html.twig', [
+            'id' => $id,
+            'name' => $name,
+            'price' => $price,
+            'desc' => $desc,
+        ]);
+
 
     }
 
@@ -65,9 +105,9 @@ class ProductController extends AbstractController
      */
     public function updateProductForm($id)
     {
-        return $this->render('product/form.html.twig', [
-            'action' => "",
-            'id' => $id
+        return $this->render('product/formWithId.html.twig', [
+            'action' => "update",
+            '_id' => $id
         ]);
     }
 

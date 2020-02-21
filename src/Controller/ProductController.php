@@ -160,13 +160,12 @@ class ProductController extends AbstractController
      */
     public function listAllProduct()
     {
-        $products = $this->getDoctrine()
-            ->getRepository(Product::class)->findAll();
+        $products = $this->getDoctrine()->getRepository(Product::class)->findAll();
 
         return $this->render(
             'product/table.html.twig',
             [
-                'product' => $products
+                'product' => $products,
             ]
         );
     }

@@ -19,10 +19,10 @@
             <tr>
                 <td class="tg-0lax">{{ us.getId }}</td>
                 <td class="tg-0lax">{{ us.getName }}</td>
-                <td class="tg-0lax">{{ us.getPrice }}€</td>
-                <td class="tg-0lax">{{ us.getDescription }}</td>
-                <td class="tg-0lax"><a href="{{ path('updateForm', {id : pro.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
-                <td class="tg-0lax"><a href="{{ path('delete', {id : pro.getId}) }}"><i class="fas fa-trash-alt"></i>Delete</a></td>
+                <td class="tg-0lax">{{ us.getEmail }}</td>
+                <td class="tg-0lax">{{ us.getPassword }}</td>
+                <td class="tg-0lax"><a href="{{ path('updateFormUser', {id : us.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
+                <td class="tg-0lax"><a href="{{ path('deleteUser', {id : us.getId}) }}"><i class="fas fa-trash-alt"></i>Delete</a></td>
             </tr>
         {% endfor %}
     </table>

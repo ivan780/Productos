@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}Form{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/3292bf0ef9.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <table class="tg">
+        <tr>
+            <th class="tg-0lax">Id</th>
+            <th class="tg-0lax">Name</th>
+            <th class="tg-0lax">Email</th>
+            <th class="tg-0lax">Password</th>
+            <th class="tg-0lax">Update</th>
+            <th class="tg-0lax">Delete</th>
+        </tr>
+        {% for us in user %}
+            <tr>
+                <td class="tg-0lax">{{ us.getId }}</td>
+                <td class="tg-0lax">{{ us.getName }}</td>
+                <td class="tg-0lax">{{ us.getPrice }}€</td>
+                <td class="tg-0lax">{{ us.getDescription }}</td>
+                <td class="tg-0lax"><a href="{{ path('updateForm', {id : pro.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
+                <td class="tg-0lax"><a href="{{ path('delete', {id : pro.getId}) }}"><i class="fas fa-trash-alt"></i>Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

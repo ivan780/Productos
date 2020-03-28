@@ -52,12 +52,6 @@ class ProductController extends AbstractController
     }
 
 
-    /**
-     * @Route(
-     *     "/update/{id}",
-     *     name="update"
-     * )
-     */
     public function updateProduct($id, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -104,12 +98,7 @@ class ProductController extends AbstractController
 
     }
 
-    /**
-     * @Route(
-     *     "/updateForm/{id}",
-     *     name="updateForm"
-     * )
-     */
+
     public function updateProductForm($id)
     {
         return $this->render('product/formWithId.html.twig', [
@@ -118,12 +107,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route(
-     *     "/delete/{id}",
-     *     name="delete"
-     * )
-     */
+
     public function deleteProduct($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -152,12 +136,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route(
-     *     "/listAll",
-     *     name="listAll"
-     * )
-     */
+
     public function listAllProduct()
     {
         $products = $this->getDoctrine()->getRepository(Product::class)->findAll();
@@ -170,12 +149,7 @@ class ProductController extends AbstractController
         );
     }
 
-    /**
-     * @Route(
-     *     "/",
-     *     name="index"
-     * )
-     */
+
     public function index()
     {
         return $this->render('product/index.html.twig');

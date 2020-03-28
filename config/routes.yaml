@@ -1,3 +1,60 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+index:
+  path: /
+  controller: App\Controller\ProductController::index
+
+listAll:
+  path: /listAll
+  controller: App\Controller\ProductController::listAllProduct
+
+delete:
+  path: /delete/{id}
+  controller: App\Controller\ProductController::deleteProduct
+
+updateForm:
+  path: /updateForm/{id}
+  controller: App\Controller\ProductController::updateProductForm
+
+update:
+  path: /update/{id}
+  controller: App\Controller\ProductController::updateProduct
+
+createForm:
+  path: /form
+  controller: App\Controller\ProductController::CreateProductForm
+
+create:
+  path: /product
+  controller: App\Controller\ProductController::createProduct
+########
+##User##
+########
+indexUser:
+  path: /User
+  controller: App\Controller\UserController::index
+
+listAllUser:
+  path: /listAllUser
+  controller: App\Controller\UserController::listAllProduct
+
+deleteUser:
+  path: /deleteUser/{id}
+  controller: App\Controller\UserController::deleteUser
+
+updateFormUser:
+  path: /updateFormUser/{id}
+  controller: App\Controller\UserController::updateUserForm
+
+updateUser:
+  path: /updateUser/{id}
+  controller: App\Controller\UserController::updateUser
+
+createFormUser:
+  path: /formUser
+  controller: App\Controller\UserController::CreateUserForm
+
+createUser:
+  path: /user
+  controller: App\Controller\UserController::createUser

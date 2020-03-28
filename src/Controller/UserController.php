@@ -10,12 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
-    /**
-     * @Route(
-     *     "/user",
-     *     name="createUser"
-     * )
-     */
     public function createUser(Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -32,12 +26,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute("listAllUser");
     }
 
-    /**
-     * @Route(
-     *     "/formUser",
-     *     name="createFormUser"
-     * )
-     */
+
     public function CreateUserForm()
     {
         return $this->render('user/form.html.twig', [
@@ -46,12 +35,6 @@ class UserController extends AbstractController
     }
 
 
-    /**
-     * @Route(
-     *     "/updateUser/{id}",
-     *     name="updateUser"
-     * )
-     */
     public function updateUser($id, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -90,12 +73,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute("listAllUser");
     }
 
-    /**
-     * @Route(
-     *     "/updateFormUser/{id}",
-     *     name="updateFormUser"
-     * )
-     */
+
     public function updateUserForm($id)
     {
         return $this->render('user/formWithId.html.twig', [
@@ -104,12 +82,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route(
-     *     "/deleteUser/{id}",
-     *     name="deleteUser"
-     * )
-     */
+
     public function deleteUser($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -128,12 +101,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute("listAllUser");
     }
 
-    /**
-     * @Route(
-     *     "/listAllUser",
-     *     name="listAllUser"
-     * )
-     */
+
     public function listAllProduct()
     {
         $products = $this->getDoctrine()->getRepository(User::class)->findAll();
@@ -146,12 +114,7 @@ class UserController extends AbstractController
         );
     }
 
-    /**
-     * @Route(
-     *     "/User",
-     *     name="indexUser"
-     * )
-     */
+
     public function index()
     {
         return $this->render('user/index.html.twig');

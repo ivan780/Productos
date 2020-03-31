@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Forget password{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 {% endblock %}
@@ -8,23 +8,20 @@
 {% block body %}
     <div id="logreg-forms">
         <form class="form-signin"  action="{{ path('listAll') }}" method="post">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Forget password</h1>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
             {# Ahora te lleva directamente a cambiar la contraseña #}
             <button class="btn btn-success btn-block" type="submit">
-                <i class="fas fa-user-plus"></i> Send email
+                <i class="fas fa-paper-plane"></i> Send email
             </button>
             <hr>
-            <!-- <p>Don't have an account!</p>  -->
             <button class="btn btn-primary btn-block" type="button" id="btn-signup"
                     onclick="window.location.href='{{ path('listAll') }}'">
-                <i class="fas fa-sign-in-alt"></i> Sign up
+                <i class="fas fa-sign-in-alt"></i> Sign in
             </button>
         </form>
-        <br>
     </div>
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('css/login.css') }}">
-    </script>
+    <script src="{{ asset('css/login.css') }}"></script>
 {% endblock %}

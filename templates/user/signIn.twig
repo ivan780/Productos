@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Sign in{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 {% endblock %}
@@ -17,18 +17,15 @@
             </button>
             <a href="{{ path('listAll') }}" id="forgot_pswd">Forgot password?</a>
             <hr>
-            <!-- <p>Don't have an account!</p>  -->
             <button class="btn btn-primary btn-block" type="button" id="btn-signup"
                     onclick="window.location.href='{{ path('listAll') }}'">
                 <i class="fas fa-user-plus"></i> Sign up new account
             </button>
         </form>
-        <br>
     </div>
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('css/login.css') }}">
-    </script>
+    <script src="{{ asset('css/login.css') }}"></script>
 {% endblock %}
 {# Basurero
   <form action="/reset/password/" class="form-reset">

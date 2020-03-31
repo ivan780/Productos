@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div id="logreg-forms">
+        <form class="form-signin"  action="{{ path('listAll') }}" method="post">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            <input type="password" id="inputConPassword" class="form-control" placeholder="Confirm password" required="">
+
+            {# Ahora te lleva directamente a cambiar la contraseña #}
+            <button class="btn btn-success btn-block" type="submit">
+                <i class="fas fa-user-plus"></i> Change password
+            </button>
+        </form>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('css/login.css') }}">
+    </script>
+{% endblock %}

@@ -6,16 +6,10 @@ use App\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-    /**
-     * @Route(
-     *     "/product",
-     *     name="create"
-     * )
-     */
+
     public function createProduct(Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -38,12 +32,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route(
-     *     "/form",
-     *     name="createForm"
-     * )
-     */
+
     public function CreateProductForm()
     {
         return $this->render('product/form.html.twig', [

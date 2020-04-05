@@ -7,16 +7,16 @@
 
 {% block body %}
     <div id="logreg-forms">
-        <form class="form-signin"  action="{{ path('listAll') }}" method="post">
+        <form class="form-signin"  action="{{ path('doResetPass') }}" method="post">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Forget password</h1>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
             {# Ahora te lleva directamente a cambiar la contraseña #}
             <button class="btn btn-success btn-block" type="submit">
                 <i class="fas fa-paper-plane"></i> Send email
             </button>
             <hr>
             <button class="btn btn-primary btn-block" type="button" id="btn-signup"
-                    onclick="window.location.href='{{ path('listAll') }}'">
+                    onclick="window.location.href='{{ path('appLogin') }}'">
                 <i class="fas fa-sign-in-alt"></i> Sign in
             </button>
         </form>

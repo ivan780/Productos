@@ -6,10 +6,19 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
+
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
@@ -51,16 +60,61 @@ class SecurityController extends AbstractController
             );
         }
 
-        return $this->redirectToRoute("changePass");
+        return $this->redirectToRoute("changePass", ['email' => $email]);
     }
 
 
-    public function changePass(){
-        return $this->render('security/changePass.html.twig');
+    public function changePass($email)
+    {
+        return $this->render('security/changePass.html.twig', [
+            'email' => $email
+        ]);
     }
 
 
-    public function doChangePass(Request $request) {
+    public function doChangePass(Request $request)
+    {
+        $email = $request->request->get('email');
+        if (!$email) {
+            return $this->redirectToRoute("resetPass");
+        }
+
+        $pass = $request->request->get('pass');
+        if (!$pass) {
+            return $this->redirectToRoute("changePass");
+        }
+
+
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $entityManager->getRepository(User::class)->find('6');
+
+        //Check if exist
+        if (!$user) {
+            throw $this->createNotFoundException(
+                'No user with this email:' . $email
+            );
+        }
+        $encodePass = $this->passwordEncoder->encodePassword(
+            $user,
+            $pass
+        );
+
+        $user = $entityManager->getRepository(User::class)->upgradePassword($user, $encodePass);
+
+
+        $entityManager->persist($user);
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute("appLogin");
+    }
+
+    public function signIn() {
+
+    }
+
+    public function doSignIn() {
 
     }
 

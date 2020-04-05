@@ -28,36 +28,6 @@ createForm:
 create:
   path: /product
   controller: App\Controller\ProductController::createProduct
-########
-##User##
-########
-indexUser:
-  path: /User
-  controller: App\Controller\UserController::index
-
-listAllUser:
-  path: /listAllUser
-  controller: App\Controller\UserController::listAllProduct
-
-deleteUser:
-  path: /deleteUser/{id}
-  controller: App\Controller\UserController::deleteUser
-
-updateFormUser:
-  path: /updateFormUser/{id}
-  controller: App\Controller\UserController::updateUserForm
-
-updateUser:
-  path: /updateUser/{id}
-  controller: App\Controller\UserController::updateUser
-
-createFormUser:
-  path: /formUser
-  controller: App\Controller\UserController::CreateUserForm
-
-createUser:
-  path: /user
-  controller: App\Controller\UserController::createUser
 ############
 ##Security##
 ############
@@ -65,3 +35,31 @@ appLogin:
   path: /login
   controller: App\Controller\SecurityController::login
   methods: GET|POST
+
+app_logout:
+  path: /logout
+  controller: App\Controller\SecurityController::logout
+
+resetPass:
+  path: /resetPass
+  controller: App\Controller\SecurityController::resetPass
+
+doResetPass:
+  path: /doResetPass
+  controller: App\Controller\SecurityController::doResetPass
+
+changePass:
+  path: /changePass/{email}
+  controller: App\Controller\SecurityController::changePass
+
+doChangePass:
+  path: /doChangePass
+  controller: App\Controller\SecurityController::doChangePass
+
+signIn:
+  path: /signIn
+  controller: App\Controller\SecurityController::signIn
+
+doSignIn:
+  path: /doSignIn
+  controller: App\Controller\SecurityController::doSignIn

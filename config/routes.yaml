@@ -40,26 +40,23 @@ app_logout:
   path: /logout
   controller: App\Controller\SecurityController::logout
 
-resetPass:
-  path: /resetPass
-  controller: App\Controller\SecurityController::resetPass
-
-doResetPass:
-  path: /doResetPass
-  controller: App\Controller\SecurityController::doResetPass
-
-changePass:
-  path: /changePass/{email}
-  controller: App\Controller\SecurityController::changePass
-
-doChangePass:
-  path: /doChangePass
-  controller: App\Controller\SecurityController::doChangePass
-
-signIn:
+signUp:
   path: /signIn
-  controller: App\Controller\SecurityController::signIn
+  controller: App\Controller\SecurityController::signUp
 
-doSignIn:
+doSignUp:
   path: /doSignIn
-  controller: App\Controller\SecurityController::doSignIn
+  controller: App\Controller\SecurityController::doSignUp
+
+#resetPass:
+#  path: /resetPass
+#  controller: App\Controller\SecurityController::resetPass
+#doResetPass:
+#  path: /doResetPass
+#  controller: App\Controller\SecurityController::doResetPass
+#changePass:
+#  path: /changePass/{email}
+#  controller: App\Controller\SecurityController::changePass
+#doChangePass:
+#  path: /doChangePass
+#  controller: App\Controller\SecurityController::doChangePass

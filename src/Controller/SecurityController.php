@@ -110,12 +110,34 @@ class SecurityController extends AbstractController
         return $this->redirectToRoute("appLogin");
     }
 
-    public function signIn() {
-
+    public function signUp() {
+        return $this->render('security/signUp.html.twig');
     }
 
-    public function doSignIn() {
+    public function doSignUp(Request $request) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = new User();
 
+
+        $email = $request->request->get('email');
+        $pass = $request->request->get('pass');
+        if (!$email && !$pass) {
+            return $this->redirectToRoute("signUp");
+        }
+        $encodePass = $this->passwordEncoder->encodePassword(
+            $user,
+            $pass
+        );
+
+        $user->setEmail($email);
+        $user->setPassword($encodePass);
+        $user->setRoles((array)"ROLE_USER");
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+
+        return $this->redirectToRoute("appLogin");
     }
 
     public function logout()

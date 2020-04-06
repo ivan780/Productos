@@ -31,10 +31,6 @@
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}">
 
-            {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-            #}
 
             <div class="checkbox mb-3">
                 <label>
@@ -45,9 +41,11 @@
                 <i class="fas fa-sign-in-alt"></i> Sign in
             </button>
             <hr>
+            {# Desabilidato por error al cambiar contraseñas
             <a href="{{ path('resetPass') }}" id="forgot_pswd">Forgot password?</a>
+            #}
             <button class="btn btn-primary btn-block" type="button" id="btn-signup"
-                    onclick="window.location.href='{{ path('listAll') }}'">
+                    onclick="window.location.href='{{ path('signUp') }}'">
                 <i class="fas fa-user-plus"></i> Sign up new account
             </button>
 

@@ -7,11 +7,13 @@
 
 {% block body %}
     <div id="logreg-forms">
-        <form class="form-signin"  action="{{ path('listAll') }}" method="post">
+        <form class="form-signin"  action="{{ path('doSignUp') }}" method="post">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign up</h1>
-            <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="">
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
+
+            <br>
+
+            <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Password" required="">
             <input type="password" id="inputConPassword" class="form-control" placeholder="Confirm password" required="">
 
 

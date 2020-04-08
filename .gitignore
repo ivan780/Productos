@@ -24,3 +24,5 @@
 .idea/symfony2.xml
 .idea/vcs.xml
 /src/Controller/test.php
+/templates/test.html.twig
+

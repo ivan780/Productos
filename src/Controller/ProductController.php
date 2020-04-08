@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ProductController extends AbstractController
 {
 
-    public function createProduct(Request $request): Response
+    public function doCreateProduct(Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -18,25 +18,22 @@ class ProductController extends AbstractController
         $product->setName($request->request->get('name'));
         $product->setPrice($request->request->get('price'));
         $product->setDescription($request->request->get('desc'));
+        $product->setUser($this->getUser());
 
         $entityManager->persist($product);
 
         $entityManager->flush();
 
-        return $this->render('product/show.html.twig', [
-            'message' => "Has creado el siguiente producto",
-            'id' => $product->getId(),
-            'name' => $product->getName(),
-            'price' => $product->getPrice(),
-            'desc' => $product->getDescription(),
-        ]);
+        return $this->redirectToRoute('listAll');
     }
 
 
-    public function CreateProductForm()
+    public function createProduct()
     {
+        $user = $this->getUser()->getUsername();
+
         return $this->render('product/form.html.twig', [
-            'action' => "create"
+            'email' => $user
         ]);
     }
 
@@ -53,46 +50,22 @@ class ProductController extends AbstractController
             );
         }
 
-        if ($request->request->get("name")){
-            $name = $request->request->get("name");
-            $product->setName($name);
-        }else{
-            $name = $product->getName();
-        }
-
-        if ($request->request->get("price")){
-            $price = $request->request->get("price");
-            $product->setPrice($price);
-        }else{
-            $price = $product->getPrice();
-        }
-
-        if ($request->request->get("desc")){
-            $desc = $request->request->get("desc");
-            $product->setDescription($desc);
-        }else{
-            $desc = $product->getDescription();
-        }
-
         $entityManager->flush();
 
-        return $this->render('product/show.html.twig', [
-            'message' => "Has actualizado el siguiente producto",
-            'id' => $id,
-            'name' => $name,
-            'price' => $price,
-            'desc' => $desc,
-        ]);
+        return $this->redirectToRoute("listAll");
 
 
     }
 
 
-    public function updateProductForm($id)
+    public function doUpdateProduct($id)
     {
+        $user = $this->getUser()->getUsername();
+
         return $this->render('product/formWithId.html.twig', [
             'action' => "update",
-            '_id' => $id
+            '_id' => $id,
+            'email' => $user
         ]);
     }
 
@@ -109,31 +82,26 @@ class ProductController extends AbstractController
             );
         }
 
-        $name = $product->getName();
-        $price = $product->getPrice();
-        $desc = $product->getDescription();
-
         $entityManager->remove($product);
         $entityManager->flush();
 
-        return $this->render('product/show.html.twig', [
-            'message' => "Has eliminado el siguiente producto",
-            'id' => $id,
-            'name' => $name,
-            'price' => $price,
-            'desc' => $desc,
-        ]);
+        return $this->redirectToRoute("listAll");
     }
 
 
     public function listAllProduct()
     {
-        $products = $this->getDoctrine()->getRepository(Product::class)->findAll();
+        $user = $this->getUser();
+        $products = $this->getDoctrine()->getRepository(Product::class);
+        $pro = $products->findBy(['user' => $user->getId()]);
+        $user = $this->getUser()->getUsername();
 
         return $this->render(
             'product/table.html.twig',
             [
-                'product' => $products,
+                'product' => $pro,
+                'email' => $user
+
             ]
         );
     }
@@ -141,6 +109,9 @@ class ProductController extends AbstractController
 
     public function index()
     {
-        return $this->render('product/index.html.twig');
+        $user = $this->getUser()->getUsername();
+        return $this->render('product/index.html.twig', [
+            'email' => $user
+        ]);
     }
 }

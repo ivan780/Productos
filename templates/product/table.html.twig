@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'userNavbar.html.twig' %}
 {% block title %}Form{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('css/table.css') }}" rel="stylesheet"/>
@@ -11,6 +11,7 @@
             <th class="tg-0lax">Name</th>
             <th class="tg-0lax">Price</th>
             <th class="tg-0lax">Description</th>
+            <th class="tg-0lax">User</th>
             <th class="tg-0lax">Update</th>
             <th class="tg-0lax">Delete</th>
         </tr>
@@ -20,7 +21,8 @@
                 <td class="tg-0lax">{{ pro.getName }}</td>
                 <td class="tg-0lax">{{ pro.getPrice }}€</td>
                 <td class="tg-0lax">{{ pro.getDescription }}</td>
-                <td class="tg-0lax"><a href="{{ path('updateForm', {id : pro.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
+                <td class="tg-0lax">{{ pro.getUser.email }}</td>
+                <td class="tg-0lax"><a href="{{ path('doUpdate', {id : pro.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
                 <td class="tg-0lax"><a href="{{ path('delete', {id : pro.getId}) }}"><i class="fas fa-trash-alt"></i>Delete</a></td>
             </tr>
         {% endfor %}

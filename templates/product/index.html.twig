@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'userNavbar.html.twig' %}
 
 {% block title %}Index{% endblock %}
 
 {% block body %}
 <div>
     {# Select #}
-    <a href="{{ path('createForm') }}" >Create</a>
+    <a href="{{ path('create') }}" >Create</a>
     <br>
     {# SelectAll #}
     <a href="{{ path('listAll') }}">List</a>

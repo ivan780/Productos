@@ -13,20 +13,20 @@ delete:
   path: /delete/{id}
   controller: App\Controller\ProductController::deleteProduct
 
-updateForm:
-  path: /updateForm/{id}
-  controller: App\Controller\ProductController::updateProductForm
+doUpdate:
+  path: /doUpdate/{id}
+  controller: App\Controller\ProductController::doUpdateProduct
 
 update:
   path: /update/{id}
   controller: App\Controller\ProductController::updateProduct
 
-createForm:
-  path: /form
-  controller: App\Controller\ProductController::CreateProductForm
+doCreate:
+  path: /doCreate
+  controller: App\Controller\ProductController::doCreateProduct
 
 create:
-  path: /product
+  path: /create
   controller: App\Controller\ProductController::createProduct
 ############
 ##Security##

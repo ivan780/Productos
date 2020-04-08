@@ -51,7 +51,7 @@ class SecurityController extends AbstractController
         }
 
         $entityManager = $this->getDoctrine()->getManager();
-        $user = $entityManager->getRepository(User::class)->findEmail($email);
+        $user = $entityManager->getRepository(User::class)->findBy(['email' => $email]);
 
         //Check if exist
         if (!$user) {

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block navbar %}
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ path('index') }}"><i class="fab fa-amazon fa-lg"></i></a>
+
+    <div class="dropdown form-inline">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-user"></i>&nbsp;Profile
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <p>
+                Email:&nbsp;{{ email }}
+            </p>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i>&nbsp;Seting</a>
+            <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}

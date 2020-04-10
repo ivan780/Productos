@@ -2,7 +2,7 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 index:
-  path: /list
+  path: /
   controller: App\Controller\ProductController::listAllProduct
 
 listAllAdmin:
@@ -11,7 +11,7 @@ listAllAdmin:
 
 delete:
   path: /delete/{id}
-  controller: App\Controller\ProductController::deleteProduct
+  controller: App\Controller\ProductController::doDeleteProduct
 
 doUpdate:
   path: /doUpdate/{id}

@@ -140,6 +140,18 @@ class SecurityController extends AbstractController
         return $this->redirectToRoute("appLogin");
     }
 
+    public function listUser(){
+        $user = $this->getUser()->getUsername();
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+        return $this->render(
+            'security/table.html.twig',
+            [
+                'User' => $users,
+                'email' => $user
+            ]
+        );
+    }
+
     public function logout()
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');

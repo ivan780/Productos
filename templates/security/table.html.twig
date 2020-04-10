@@ -1,0 +1,29 @@
+{% extends 'userNavbar.html.twig' %}
+{% block title %}Form{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <table class="tg">
+        <tr>
+            <th class="tg-0lax">Id</th>
+            <th class="tg-0lax">Email</th>
+            <th class="tg-0lax">Role</th>
+        </tr>
+        {% for use in User %}
+            <tr>
+                <td class="tg-0lax">{{ use.getId }}</td>
+                <td class="tg-0lax">{{ use.getEmail }}</td>
+
+                <td class="tg-0lax">
+                    {% for role in use.getRoles %}
+                     {{ role }}
+                    {% endfor %}
+                </td>
+                <td class="tg-0lax"><a href="{{ path('doUpdate', {id : use.getId}) }}"><i class="fas fa-edit"></i>Update</a></td>
+                <td class="tg-0lax"><a href="{{ path('delete', {id : use.getId}) }}"><i class="fas fa-trash-alt"></i>Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

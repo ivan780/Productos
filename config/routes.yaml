@@ -6,8 +6,12 @@ index:
   controller: App\Controller\ProductController::index
 
 listAll:
-  path: /listAll
+  path: /list
   controller: App\Controller\ProductController::listAllProduct
+
+listAllAdmin:
+  path: /listAll
+  controller: App\Controller\ProductController::listAll
 
 delete:
   path: /delete/{id}

@@ -89,6 +89,19 @@ class ProductController extends AbstractController
     }
 
 
+    public function listAll(){
+        $user = $this->getUser()->getUsername();
+        $products = $this->getDoctrine()->getRepository(Product::class)->findAll();
+        return $this->render(
+            'product/table.html.twig',
+            [
+                'product' => $products,
+                'email' => $user
+
+            ]
+        );
+    }
+
     public function listAllProduct()
     {
         $user = $this->getUser();

@@ -49,6 +49,7 @@ security:
         - { path: ^/signIn, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/doSignIn, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/listAll, roles: ROLE_ADMIN }
+        - { path: ^/listUser, roles: ROLE_ADMIN }
         - { path: ^/*, roles: ROLE_USER}
 
     role_hierarchy:

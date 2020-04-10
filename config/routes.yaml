@@ -2,10 +2,6 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 index:
-  path: /
-  controller: App\Controller\ProductController::index
-
-listAll:
   path: /list
   controller: App\Controller\ProductController::listAllProduct
 
@@ -52,6 +48,9 @@ doSignUp:
   path: /doSignIn
   controller: App\Controller\SecurityController::doSignUp
 
+listUser:
+  path: /listUser
+  controller: App\Controller\SecurityController::listUser
 #resetPass:
 #  path: /resetPass
 #  controller: App\Controller\SecurityController::resetPass

@@ -24,7 +24,7 @@ class ProductController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->redirectToRoute('listAll');
+        return $this->redirectToRoute('index');
     }
 
 
@@ -38,8 +38,9 @@ class ProductController extends AbstractController
     }
 
 
-    public function updateProduct($id, Request $request)
+    public function doUpdateProduct($id, Request $request)
     {
+        $user = $this->getUser();
         $entityManager = $this->getDoctrine()->getManager();
         $product = $entityManager->getRepository(Product::class)->find($id);
 
@@ -49,29 +50,48 @@ class ProductController extends AbstractController
                 'No product found for id '.$id
             );
         }
+        if ($product->getUser() != $user) {
+            throw $this->createNotFoundException(
+                'This product is not created by you '.$id
+            );
+        }
+
+        $name = $request->request->get('name');
+        if ($name){
+            $product->setName($name);
+        }
+        $price = $request->request->get('price');
+        if ($price){
+            $product->setPrice($price);
+        }
+        $desc = $request->request->get('desc');
+        if ($desc){
+            $product->setDescription($desc);
+        }
 
         $entityManager->flush();
 
-        return $this->redirectToRoute("listAll");
+        return $this->redirectToRoute("index");
 
 
     }
 
 
-    public function doUpdateProduct($id)
+    public function updateProduct($id)
     {
         $user = $this->getUser()->getUsername();
 
         return $this->render('product/formWithId.html.twig', [
-            'action' => "update",
+            'action' => "doUpdate",
             '_id' => $id,
             'email' => $user
         ]);
     }
 
 
-    public function deleteProduct($id)
+    public function doDeleteProduct($id)
     {
+        $user = $this->getUser();
         $entityManager = $this->getDoctrine()->getManager();
         $product = $entityManager->getRepository(Product::class)->find($id);
 
@@ -81,11 +101,16 @@ class ProductController extends AbstractController
                 'No product found for id '.$id
             );
         }
+        if ($product->getUser() != $user) {
+            throw $this->createNotFoundException(
+                'This product is not created by you '.$id
+            );
+        }
 
         $entityManager->remove($product);
         $entityManager->flush();
 
-        return $this->redirectToRoute("listAll");
+        return $this->redirectToRoute("index");
     }
 
 
